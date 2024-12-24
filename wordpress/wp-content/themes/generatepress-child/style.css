@@ -1,0 +1,27 @@
+/*
+Theme Name: GeneratePress Child
+Theme URI: https://example.com/generatepress-child
+Description: Tema hijo de GeneratePress
+Author: Alevi Rodriguez
+Author URI: https://example.com
+Template: generatepress
+Version: 1.0.0
+*/
+
+/* Aquí puedes agregar tus estilos personalizados */
+
+
+.site-header{
+    background-color: red;
+}
+.site-logo{
+    background-color: yellow;
+}
+.main-navigation{
+    background-color: blue;
+}
+.nav-link.active {
+    color: #0d6efd !important;
+}
+
+

@@ -1,0 +1,33 @@
+services:
+  wordpress:
+    image: wordpress:php8.0-apache  # Usamos la imagen oficial de WordPress con PHP 8.0
+    container_name: wordpress-container
+    ports:
+      - "8080:80"  # Exponer el puerto 8080 de tu máquina al puerto 80 del contenedor
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: ideaPress
+      WORDPRESS_DB_USER: user_alevi
+      WORDPRESS_DB_PASSWORD: alevi
+    volumes:
+      - ./wordpress:/var/www/html  # Mapea la carpeta wordpress local al contenedor
+    depends_on:
+      - db
+    restart: always
+
+  db:
+    image: mysql:8.0  # Usamos la imagen oficial de MySQL 8.0
+    container_name: wordpress-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: ideaPress
+      MYSQL_USER: user_alevi
+      MYSQL_PASSWORD: alevi
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    restart: always
+
+volumes:
+  db_data:
