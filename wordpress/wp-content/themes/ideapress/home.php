@@ -2,7 +2,7 @@
 /*
 Template Name: Entradas
 */
-get_header(); // Carga el encabezado del tema
+get_header();
 ?>
 
 <section id="posts" class="section">
@@ -91,16 +91,17 @@ get_header(); // Carga el encabezado del tema
 <div class="pagination-wrapper mt-4 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
     <?php 
     echo paginate_links(array(
-        'prev_text' => '<span class="pagination-arrow">&laquo;</span> Anterior', // Ícono de flecha
-        'next_text' => 'Siguiente <span class="pagination-arrow">&raquo;</span>', // Ícono de flecha
+        'prev_text' => '<span class="pagination-arrow">&lt;</span>', // Flecha izquierda
+        'next_text' => '<span class="pagination-arrow">&gt;</span>', // Flecha derecha
         'type' => 'list', // Tipo de lista para mayor control de estilo
-        'before_page_number' => '<span class="page-number">', // Estilo para los números de página
+        'before_page_number' => '<span class="page-number">',
         'after_page_number' => '</span>',
-        'end_size' => 2, // Para mostrar siempre las primeras y últimas páginas
+        'end_size' => 2, // Páginas al inicio y final
         'mid_size' => 2, // Páginas cercanas a la actual
     ));
     ?>
 </div>
+
 
 
             </div>
