@@ -74,6 +74,11 @@ scroll-behavior: smooth;
 .inside-header{
   padding: 20px 40px;
 }
+/* Ajustar el tamaño del logo */
+.custom-logo {
+  max-width: 100px;  /* Cambia 200px por el tamaño que desees */
+  height: auto;
+}
 /*--------------------------------------------------------------
 # Global Sections
 --------------------------------------------------------------*/

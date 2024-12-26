@@ -18,7 +18,7 @@
                         <img class="custom-logo" src="<?php echo esc_url($logo_url); ?>" alt="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>">
                     </a>
                 <?php else : ?>
-                    <h1 ">
+                    <h1>
                         <a class="navbar-brand site-title" href="<?php echo esc_url(home_url('/')); ?>">
                             <?php bloginfo('name'); ?>
                         </a>
