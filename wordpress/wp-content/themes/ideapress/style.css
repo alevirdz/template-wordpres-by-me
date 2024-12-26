@@ -615,16 +615,16 @@ padding-bottom: 50px;
 position: relative;
 }
 
-.footer .footer-newsletter {
+.subscription-newsletter {
 background-color: color-mix(in srgb, var(--heading-color), transparent 95%);
 padding: 50px 0;
 }
 
-.footer .footer-newsletter h4 {
+.subscription-newsletter h4 {
 font-size: 24px;
 }
 
-.footer .footer-newsletter .newsletter-form {
+.subscription-newsletter .newsletter-form {
 margin-top: 30px;
 margin-bottom: 15px;
 padding: 6px 8px;
@@ -637,11 +637,11 @@ transition: 0.3s;
 border-radius: 50px;
 }
 
-.footer .footer-newsletter .newsletter-form:focus-within {
+.subscription-newsletter .newsletter-form:focus-within {
 border-color: var(--accent-color);
 }
 
-.footer .footer-newsletter .newsletter-form input[type=email] {
+.subscription-newsletter .newsletter-form input[type=email] {
 border: 0;
 padding: 4px;
 width: 100%;
@@ -649,11 +649,11 @@ background-color: color-mix(in srgb, var(--background-color), transparent 50%);
 color: var(--default-color);
 }
 
-.footer .footer-newsletter .newsletter-form input[type=email]:focus-visible {
+.subscription-newsletter .newsletter-form input[type=email]:focus-visible {
 outline: none;
 }
 
-.footer .footer-newsletter .newsletter-form input[type=submit] {
+.subscription-newsletter .newsletter-form input[type=submit] {
 border: 0;
 font-size: 16px;
 padding: 0 20px;
@@ -664,7 +664,7 @@ transition: 0.3s;
 border-radius: 50px;
 }
 
-.footer .footer-newsletter .newsletter-form input[type=submit]:hover {
+.subscription-newsletter .newsletter-form input[type=submit]:hover {
 background: color-mix(in srgb, var(--accent-color), transparent 20%);
 }
 

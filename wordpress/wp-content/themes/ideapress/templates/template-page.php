@@ -404,7 +404,7 @@ get_header(); // Carga el encabezado del tema
 </section>
 
 <section >
-<div class="footer-newsletter">
+<div class="subscription-newsletter footer-newsletter">
   <div class="container">
     <div class="row justify-content-center text-center">
       <div class="col-lg-6">
