@@ -1,6 +1,6 @@
 services:
   wordpress:
-    image: wordpress:php8.0-apache  # Usamos la imagen oficial de WordPress con PHP 8.0
+    image: wordpress:latest # Usamos la imagen oficial de WordPress con PHP 8.0
     container_name: wordpress-container
     ports:
       - "8080:80"  # Exponer el puerto 8080 de tu máquina al puerto 80 del contenedor

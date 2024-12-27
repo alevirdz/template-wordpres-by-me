@@ -166,7 +166,42 @@ function crear_y_configurar_paginas() {
 add_action('after_switch_theme', 'crear_y_configurar_paginas');
 
 
+/** WOOCOMMERCE **/
+add_theme_support('woocommerce');
 
+function mi_template_carrito_personalizado( $template ) {
+    // Verificar si es la página del carrito
+    if ( is_cart() ) {
+        // Verificar si existe tu plantilla personalizada en el tema
+        $custom_template = locate_template( 'woocommerce/cart/cart.php' );
+        
+        // Si existe la plantilla personalizada, cargarla
+        if ( $custom_template ) {
+            return $custom_template;
+        }
+    }
+    
+    // Si no hay plantilla personalizada, WooCommerce usará la predeterminada
+    return $template;
+}
+add_filter( 'template_include', 'mi_template_carrito_personalizado', 99 );
+
+// Función para cargar la plantilla personalizada de finalizar compra
+function mi_template_checkout_personalizado( $template ) {
+    if ( is_checkout() && ! is_cart() ) {
+        // Ruta de tu plantilla personalizada dentro del tema o tema hijo
+        $custom_template = get_stylesheet_directory() . '/woocommerce/checkout/form-checkout.php';
+        if ( file_exists( $custom_template ) ) {
+            return $custom_template;
+        }
+    }
+    return $template;
+}
+add_filter( 'template_include', 'mi_template_checkout_personalizado', 99 );
+
+
+define('WP_DEBUG', true);
+define('WP_DEBUG_LOG', true);
 
 
 
