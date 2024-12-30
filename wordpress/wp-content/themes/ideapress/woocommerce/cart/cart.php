@@ -364,7 +364,7 @@ input.cart__discount{
     letter-spacing: 2px;
     text-transform: uppercase;
     background: #111111;
-    padding: 0 30px;
+    /* padding: 0 30px; */
     border: none;
     position: absolute;
     right: 22px;
