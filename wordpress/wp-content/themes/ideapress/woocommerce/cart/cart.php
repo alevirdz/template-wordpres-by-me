@@ -14,7 +14,8 @@ if ( WC()->cart->is_empty() ) : ?>
 <?php else : ?>
 
 <div class="container">
-<form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
+    <div class="proceed-checkout mt-5 mb-5">
+    <form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
             <?php do_action( 'woocommerce_before_cart_table' ); ?>
 
             <div class="row">
@@ -133,7 +134,7 @@ if ( WC()->cart->is_empty() ) : ?>
                                         echo apply_filters( 'woocommerce_cart_item_remove_link',
                                             sprintf(
                                                 '<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">
-                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                    <i class="product-remove-icon fa fa-close" aria-hidden="true"></i>
                                                 </a>',
                                                 esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
                                                 esc_attr( sprintf( __( 'Remove %s from cart', 'woocommerce' ), wp_strip_all_tags( $product_name ) ) ),
@@ -176,21 +177,21 @@ if ( WC()->cart->is_empty() ) : ?>
                     <div class="cart__total">
                         <?php
                             do_action( 'woocommerce_cart_collaterals' );
-                            ?>
+                        ?>
                     </div>
                 </div>
             </div>
                 <!-- Botónes para actualizar o ir a la tienda -->
             <div class="row">
                 <div class="col-6">
-                <a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) ); ?>" class="btn btn-primary">
+                <a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) ); ?>" class="btn btn-continue-shopping">
                             <?php esc_html_e( 'Go to Store', 'woocommerce' ); ?>
                         </a>
                 </div>
                 <div class="col-6">
                     <div class="actions text-right">
                         <!-- Botón para actualizar el carrito -->
-                        <button type="submit" class="btn btn-secondary" name="update_cart"
+                        <button type="submit" class="btn btn-update-cart" name="update_cart"
                             value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
                         <?php wp_nonce_field( 'woocommerce-cart', 'woocommerce-cart-nonce' ); ?>
                     </div>
@@ -201,6 +202,7 @@ if ( WC()->cart->is_empty() ) : ?>
 
             <?php do_action( 'woocommerce_after_cart_table' ); ?>
         </form>
+    </div>
 </div>
 
 <?php do_action( 'woocommerce_after_cart' ); ?>
@@ -369,5 +371,35 @@ input.cart__discount{
     top: 0px;
     height: 66%;
 }
-
+.product-remove-icon{
+    font-size: 18px;
+    color: #111111;
+    height: 40px;
+    width: 40px;
+    background: #f3f2ee;
+    border-radius: 50%;
+    line-height: 40px;
+    text-align: center;
+}
+.btn-continue-shopping{
+    font-size: 14px;
+    color: #111111;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: #ffffff;
+    border: 1px solid #e1e1e1;
+    border-radius: 0px;
+    padding: 15px 75px
+}
+.btn-update-cart {
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: #111111;
+    border-radius: 0px;
+    padding: 15px 20px
+}
 </style>
