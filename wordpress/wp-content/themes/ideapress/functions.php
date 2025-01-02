@@ -173,7 +173,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
     // Plantilla del carrito personalizada (verificar si es necesario)
     function mi_template_carrito_personalizado( $template ) {
         if ( is_cart() ) {
-            $custom_template = locate_template( 'woocommerce/cart/cart.php' );
+            $custom_template = get_stylesheet_directory() . '/woocommerce/cart/cart.php' ;
             if ( $custom_template ) {
                 return $custom_template;
             }
@@ -192,7 +192,66 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
         return $template;
     }
     add_filter( 'template_include', 'mi_template_checkout_personalizado', 99 );
+
+    // Plantilla personalizada para la página Mi Cuenta
+function mi_template_mi_cuenta_personalizado( $template ) {
+    if ( is_account_page() ) {
+        // Ruta del archivo de plantilla personalizada
+        $custom_template = get_stylesheet_directory() . '/woocommerce/myaccount/my-account.php';
+        
+        // Verificar si el archivo existe
+        if ( file_exists( $custom_template ) ) {
+            return $custom_template;
+        }
+    }
+    return $template;
 }
+add_filter( 'template_include', 'mi_template_mi_cuenta_personalizado', 99 );
+/**
+ * Registrar plantilla personalizada para form-login.
+ */
+function mi_template_form_login_personalizado( $template ) {
+    if ( is_account_page() && ! is_user_logged_in() ) {
+        $custom_template = get_stylesheet_directory() . '/woocommerce/myaccount/form-login.php';
+        if ( file_exists( $custom_template ) ) {
+            return $custom_template;
+        }
+    }
+    return $template;
+}
+add_filter( 'template_include', 'mi_template_form_login_personalizado', 99 );
+
+
+
+
+}
+/**
+ * Redirección personalizada al cerrar sesión en WooCommerce.
+ */
+function cerrar_sesion_personalizada_en_mi_cuenta() {
+    // Verificar si el usuario está en la página de cierre de sesión.
+    if ( isset( $_GET['action'] ) && $_GET['action'] === 'logout' ) {
+        // Cerrar sesión.
+        wp_logout();
+
+        // Redirigir al formulario de inicio de sesión.
+        wp_safe_redirect( home_url( '/form-login/' ) ); // Cambia '/form-login/' a la URL deseada.
+        exit;
+    }
+}
+add_action( 'init', 'cerrar_sesion_personalizada_en_mi_cuenta' );
+
+
+/**
+ * Desactivar la redirección predeterminada al cerrar sesión en WooCommerce.
+ */
+function desactivar_redireccion_woocommerce_cerrar_sesion( $redirect_url, $user ) {
+    // Retorna la URL personalizada.
+    return home_url( '/form-login/' ); // Cambia '/form-login/' a la URL adecuada.
+}
+add_filter( 'woocommerce_logout_redirect', 'desactivar_redireccion_woocommerce_cerrar_sesion', 10, 2 );
+
+
 
 // function custom_woocommerce_form_field( $key, $args, $value = null ) {
 //     $args = wp_parse_args( $args, array(
@@ -292,6 +351,8 @@ function custom_no_payment_methods_message( $message ) {
 
 
 /** ============================================================   **/
+
+
 
 
 

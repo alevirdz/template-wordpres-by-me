@@ -52,6 +52,44 @@
         </nav>
     </div>
 </header>
+<!-- Breadcrumb Section Begin -->
+<?php
+if ( is_shop() || is_product() || is_cart() || is_checkout() ) : ?>
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__text">
+                    <h4><?php if ( is_shop() ) {
+                            echo esc_html( 'Shop' ); // Página de la tienda
+                        } elseif ( is_cart() ) {
+                            echo esc_html( 'Cart' ); // Página del carrito
+                        } elseif ( is_checkout() ) {
+                            echo esc_html( 'Checkout' ); // Página de pago
+                        } elseif ( is_product() ) {
+                            // Si estamos en una página de producto individual
+                            echo get_the_title();
+                        } elseif ( is_account_page() ) {
+                            echo esc_html( 'My Account' ); // Página de la cuenta
+                        } elseif ( is_tax() ) {
+                            // Si estamos en una página de categoría o etiquetas
+                            single_term_title();
+                        } else {
+                            // Obtener el título de la página actual si no es ninguna de las anteriores
+                            echo get_the_title();
+                        }
+                        ?></h4>
+                    <div class="woocommerce-breadcrumb">
+                        <?php woocommerce_breadcrumb(); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+
 
 
 
